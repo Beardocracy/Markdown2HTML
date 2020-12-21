@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+''' Converts markdown to HTML '''
+
 import sys
 import os.path
-
-''' Converts markdown to HTML '''
 
 if __name__ == "__main__":
     ''' Check for correct usage '''
