@@ -24,7 +24,6 @@ if __name__ == "__main__":
                     htmlline += word + ' '
                 htmlline += llist[-1][:-1]
                 htmlline += "</h{}>\n".format(len(llist[0]))
-                print(htmlline)
                 html.write(htmlline)
 
     exit(0)
