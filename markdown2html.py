@@ -15,4 +15,16 @@ if __name__ == "__main__":
         print("Missing {}".format(sys.argv[1]), file=sys.stderr)
         exit(1)
 
+    with open(sys.argv[1], 'r') as md:
+        with open(sys.argv[2], 'w') as html:
+            for line in md:
+                llist = line.split(' ')
+                htmlline = "<h{}>".format(len(llist[0]))
+                for word in llist[1:-1]:
+                    htmlline += word + ' '
+                htmlline += llist[-1][:-1]
+                htmlline += "</h{}>\n".format(len(llist[0]))
+                print(htmlline)
+                html.write(htmlline)
+
     exit(0)
