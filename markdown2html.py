@@ -20,12 +20,10 @@ if __name__ == "__main__":
             for line in md:
                 llist = line.split(' ')
                 heading_level = len(line) - len(line.lstrip('#'))
-                if heading_level > 0:
+                if heading_level >= 1 and heading_level <= 6:
                     htmlline = "<h{}>".format(heading_level)
-                    for word in llist[1:-1]:
-                        htmlline += word + ' '
-                    htmlline += llist[-1][:-1]
+                    htmlline += line.lstrip('#').strip()
                     htmlline += "</h{}>\n".format(heading_level)
-                html.write(htmlline)
+                    html.write(htmlline)
 
     exit(0)
