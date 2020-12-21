@@ -7,7 +7,7 @@ import os.path
 if __name__ == "__main__":
     ''' Part 0 '''
     ''' Check for correct usage '''
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         message = "Usage: ./markdown2html.py README.md README.html"
         print(message, file=sys.stderr)
         exit(1)
