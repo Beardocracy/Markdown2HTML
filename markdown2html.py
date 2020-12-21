@@ -23,7 +23,7 @@ if __name__ == "__main__":
                 for word in llist[1:-1]:
                     htmlline += word + ' '
                 htmlline += llist[-1][:-1]
-                htmlline += "</h{}>\n".format(len(llist[0]))
+                htmlline += "</h{}>".format(len(llist[0]))
                 html.write(htmlline)
 
     exit(0)
