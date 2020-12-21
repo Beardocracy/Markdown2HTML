@@ -19,6 +19,8 @@ if __name__ == "__main__":
         with open(sys.argv[2], 'w') as html:
             ul_list_start = False
             is_ulist = False
+            ol_list_start = False
+            is_olist = False
             for line in md:
 
                 heading_level = len(line) - len(line.lstrip('#'))
@@ -30,10 +32,22 @@ if __name__ == "__main__":
                         ul_list_start = True
                     html.write("<li>" + line.lstrip('-').strip() + "</li>\n")
 
+                if line[0] == '*':
+                    is_olist = True
+                    if ol_list_start is False:
+                        html.write("<ol>\n")
+                        ol_list_start = True
+                    html.write("<li>" + line.lstrip('*').strip() + "</li>\n")
+
                 if is_ulist and line[0] != '-':
                     ul_list_start = False
                     is_ulist = False
                     html.write("</ul>\n")
+
+                if is_olist and line[0] != '*':
+                    ol_list_start = False
+                    is_olist = False
+                    html.write("</ol>\n")
 
                 if heading_level >= 1 and heading_level <= 6:
                     htmlline = "<h{}>".format(heading_level)
@@ -43,4 +57,7 @@ if __name__ == "__main__":
 
             if ul_list_start is True:
                 html.write("</ul>\n")
+
+            if ol_list_start is True:
+                html.write("</ol>\n")
     exit(0)
