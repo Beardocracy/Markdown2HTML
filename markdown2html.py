@@ -19,11 +19,13 @@ if __name__ == "__main__":
         with open(sys.argv[2], 'w') as html:
             for line in md:
                 llist = line.split(' ')
-                htmlline = "<h{}>".format(len(llist[0]))
-                for word in llist[1:-1]:
-                    htmlline += word + ' '
-                htmlline += llist[-1][:-1]
-                htmlline += "</h{}>".format(len(llist[0]))
+                heading_level = len(line) - len(line.lstrip('#'))
+                if heading_level > 0:
+                    htmlline = "<h{}>".format(heading_level)
+                    for word in llist[1:-1]:
+                        htmlline += word + ' '
+                    htmlline += llist[-1][:-1]
+                    htmlline += "</h{}>\n".format(heading_level)
                 html.write(htmlline)
 
     exit(0)
